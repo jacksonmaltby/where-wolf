@@ -5,11 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Where Wolf?</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
+    <header class="header">
+        <h1>Where Wolf?</h1>
+    </header>
+    <nav class="search-bar">
+        <h3 class="search-title">What are you looking for?</h3>
+        <form class="search-filters">
+            <input class="location" type="text" placeholder="Search city, address, or zip"></input>
+            <select class="business-types">
+                <option>-Type of Business-</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Grocery Store">Grocery Store</option>
+                <option value="Park">Park</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Museum">Museum</option>
+            </select>
+            <label class="dogs">Allows Dogs:
+                <input type="checkbox"></input>
+                <span></span>
+            </label>
+            <button class="find" type="submit">Find</button>
+        </form>
+    </nav>
+    <main>
+        <summary class="results">
+            <h2 class="results-title">Results</h2>
+            <ul class="results-list">
 
+            </ul>
+        </summary>
+        <figure class="map">
+            <h2 class="map-title">Map</h2>
+            <div id="map">
+
+            </div>
+        </figure>
+    </main>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo&callback=initMap&v=weekly"
+        defer></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
