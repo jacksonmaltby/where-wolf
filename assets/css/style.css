@@ -1,4 +1,6 @@
 #map {
-  height: 600px;
-  width: 50%; 
+  height: 550px;
+  width: 45%; 
+  float: right;
+  margin: 30px;
 }
