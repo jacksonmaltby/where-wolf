@@ -17,9 +17,9 @@
     </header>
     <nav class="search-bar">
         <h3 class="search-title">What are you looking for?</h3>
-        <form class="search-filters">
-            <input class="location" type="text" placeholder="Search city, address, or zip"></input>
-            <select class="business-types">
+        <form class="search-filters" id="search-form">
+            <input id="location" class="location" type="text" placeholder="Search city, address, or zip"></input>
+            <select class="business-types" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Grocery Store">Grocery Store</option>
@@ -28,7 +28,7 @@
                 <option value="Museum">Museum</option>
             </select>
             <label class="dogs">Allows Dogs:
-                <input type="checkbox"></input>
+                <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
             </label>
             <button class="find" type="submit">Find</button>
@@ -37,7 +37,7 @@
     <main>
         <summary class="results">
             <h2 class="results-title">Results</h2>
-            <ul class="results-list">
+            <ul class="results-list" id="yelp-results">
 
             </ul>
         </summary>
@@ -50,9 +50,8 @@
     </main>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo&callback=initMap&v=weekly"
-        defer></script>
-
- main
+        defer>
+    </script>
     <script src="./assets/js/script.js"></script>
 </body>
 
