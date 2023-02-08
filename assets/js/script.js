@@ -1,3 +1,13 @@
+var searchFormEl = document.querySelector('#search-form');
+var locationInputEl = document.querySelector('#location');
+var yelpResultsEl = document.querySelector('#yelp-results');
+var typeSelectEl = document.querySelector('#business-types');
+var dogsAllowEl = document.querySelector('#dogs-allow');
+
+const mapApiKey = 'AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo';
+const yelpApiKey = 's3OmpjFPf2Goy3D8nxXzJo5scmyapd4SxRmwIvYdEohTuwQGh776xUO8mmz5TWvVgukzLej0H4NRbzXZ8r0t28Bi0cyWykigznWY_UTD0G-IZbyCgUQ7dlM9fNjhY3Yx';
+
+
 // Initialize and add the map
 
 function initMap() {
@@ -42,7 +52,7 @@ function searchYelp(location) {
 }
 
 function displayBusinesses(businesses) {
-  var list = document.getElementById("business-list");
+  var list = document.getElementById("yelp-results");
   list.innerHTML = "";
   businesses.forEach(business => {
     var item = document.createElement("li");
