@@ -11,7 +11,6 @@ const mapApiKey = 'AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo';
 const yelpApiKey = 's3OmpjFPf2Goy3D8nxXzJo5scmyapd4SxRmwIvYdEohTuwQGh776xUO8mmz5TWvVgukzLej0H4NRbzXZ8r0t28Bi0cyWykigznWY_UTD0G-IZbyCgUQ7dlM9fNjhY3Yx';
 
 // Initialize and add the map
-
 function initMap() {
   // The location of Seattle
   const seattle = { lat: 47.608013, lng: -122.335167 };
@@ -32,10 +31,8 @@ window.initMap = initMap;
 // Add click event for search
 $('button').click((e) => {
   e.preventDefault();
-  
   // Get input text to use for search
   window.searchText = $('#location').val();
-
   // Define the settings for the API call
   var settings = {
     "async": true,
@@ -48,16 +45,13 @@ $('button').click((e) => {
       "postman-token": "3f23d8c3-ce48-a224-50c0-14b9094948fc"
     }
   }
-
   // Use AJAX to perform Yelp API call
   $.ajax(settings).done(function (response) {
     let results = response.businesses;
-
     // Create div to hold all search results
     let resultsDiv = document.createElement('div');
     $(resultsDiv).addClass('searchResults');
     $('main').append(resultsDiv);
-
     // Display results
     results.forEach(function(business) {
       // Create each business result div
@@ -66,7 +60,6 @@ $('button').click((e) => {
       let businessAddress = `${business.location.display_address[0]}, ${business.location.display_address[1]}`;
       businessInfo.innerHTML = `<h4>${businessName}</h4><p>${businessAddress}</p>`;
       $(businessInfo).addClass('result col-md-6');
-
       // Create each details div
       let details = document.createElement('div');
       let businessImg = business.image_url;
@@ -78,10 +71,8 @@ $('button').click((e) => {
       details.innerHTML = `<img src=${businessImg} style='width: auto; height: auto; max-width: 150px; max-height: 100px'><p>Category: ${category}<br>Phone number: ${phone}<br>Average price: ${price}</p>`;
       $(details).addClass('detail');
       $(mapDiv).attr({id: businessName, class: 'map'});
-
       // Add map div to details
       $(details).append(mapDiv);
-
       // Add divs to DOM
       $(businessInfo).append(details);
       $('.searchResults').append(businessInfo);
@@ -90,37 +81,3 @@ $('button').click((e) => {
       })
     })
   })
-
-function displayBusinesses(businesses) {
-  var list = document.getElementById("yelp-results");
-  list.innerHTML = "";
-  businesses.forEach(business => {
-    var item = document.createElement("li");
-    item.textContent = business.name;
-    list.appendChild(item);
-  });
-}
-  }
-  
-  window.initMap = initMap;
-
-function searchYelp(location) {
-  var yelpUrl = "https://api.yelp.com/v3/businesses/search?term=restaurants&location=" + location;
-  fetch(yelpUrl, {
-    headers: {
-      "Authorization": "Bearer " + yelpApiKey
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    data.businesses.forEach(business => {
-      var marker = new google.maps.Marker({
-        position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude},
-        map: map,
-        title: business.name
-      });
-    });
-  });
-}
-
-searchFormEl.addEventListener('submit', searchYelp);
