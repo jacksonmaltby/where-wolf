@@ -91,4 +91,36 @@ $('button').click((e) => {
     })
   })
 
+function displayBusinesses(businesses) {
+  var list = document.getElementById("yelp-results");
+  list.innerHTML = "";
+  businesses.forEach(business => {
+    var item = document.createElement("li");
+    item.textContent = business.name;
+    list.appendChild(item);
+  });
+}
+  }
+  
+  window.initMap = initMap;
 
+function searchYelp(location) {
+  var yelpUrl = "https://api.yelp.com/v3/businesses/search?term=restaurants&location=" + location;
+  fetch(yelpUrl, {
+    headers: {
+      "Authorization": "Bearer " + yelpApiKey
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    data.businesses.forEach(business => {
+      var marker = new google.maps.Marker({
+        position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude},
+        map: map,
+        title: business.name
+      });
+    });
+  });
+}
+
+searchFormEl.addEventListener('submit', searchYelp);
