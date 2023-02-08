@@ -7,7 +7,6 @@ var dogsAllowEl = document.querySelector('#dogs-allow');
 const mapApiKey = 'AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo';
 const yelpApiKey = 's3OmpjFPf2Goy3D8nxXzJo5scmyapd4SxRmwIvYdEohTuwQGh776xUO8mmz5TWvVgukzLej0H4NRbzXZ8r0t28Bi0cyWykigznWY_UTD0G-IZbyCgUQ7dlM9fNjhY3Yx';
 
-
 // Initialize and add the map
 
 function initMap() {
@@ -60,3 +59,27 @@ function displayBusinesses(businesses) {
     list.appendChild(item);
   });
 }
+  }
+  
+  window.initMap = initMap;
+
+function searchYelp(location) {
+  var yelpUrl = "https://api.yelp.com/v3/businesses/search?term=restaurants&location=" + location;
+  fetch(yelpUrl, {
+    headers: {
+      "Authorization": "Bearer " + yelpApiKey
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    data.businesses.forEach(business => {
+      var marker = new google.maps.Marker({
+        position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude},
+        map: map,
+        title: business.name
+      });
+    });
+  });
+}
+
+searchFormEl.addEventListener('submit', searchYelp);
