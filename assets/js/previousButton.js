@@ -16,6 +16,7 @@ previousButton.addEventListener("click", async () => {
         }
     });
 
+    
     const data = await response.json();
 
     results.innerHTML = "";
