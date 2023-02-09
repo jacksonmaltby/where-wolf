@@ -7,19 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <title>Where Wolf?</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin="">
+        </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <title>Where Wolf?</title>
 </head>
 
 <body>
     <header class="header">
         <h1>Where Wolf?</h1>
     </header>
+
     <nav class="search-bar">
         <h3 class="search-title">What are you looking for?</h3>
-        <form class="search-filters" id="search-form">
-            <input id="location" class="location" type="text" placeholder="Search city, address, or zip"></input>
+    </nav>
+
+    <main>
+
+        <figure class="map">
+            <div id="map"></div>
+        </figure>
+
+
+        <div>
+            <input type="text" id="searchTerm" placeholder="Search city, address, or zip">
             <select class="business-types" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
@@ -32,27 +48,16 @@
                 <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
             </label>
-            <button class="find" type="submit">Find</button>
-        </form>
-    </nav>
-    <main>
+            <button id="searchButton">Search</button>
+        </div>
+
+
         <summary class="results">
             <h2 class="results-title">Results</h2>
-            <ul class="results-list" id="yelp-results">
-
-            </ul>
+            <ul class="results-list" id="yelp-results"></ul>
         </summary>
-        <figure class="map">
-            <h2 class="map-title">Map</h2>
-            <div id="map">
 
-            </div>
-        </figure>
     </main>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAncO5NvmJjQTP7fjUWTPkITFbl4yQ-woo&callback=initMap&v=weekly"
-        defer>
-    </script>
     <script src="./assets/js/script.js"></script>
 </body>
 
