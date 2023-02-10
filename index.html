@@ -6,35 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Where Wolf?</title>
 </head>
 
-<body>
-    <header class="header">
+<body class="bg-gray-800 text-gray-100">
+    <header class="">
         <h1>Where Wolf?</h1>
     </header>
-
-    <nav class="search-bar">
-        <h3 class="search-title">What are you looking for?</h3>
+    <nav class="">
+        <h3 class="">What are you looking for?</h3>
     </nav>
-
     <main>
-
-        <figure class="map">
+        <figure class="">
             <div id="map"></div>
         </figure>
-
-
         <div>
-            <input type="text" id="searchTerm" placeholder="Search city, address, or zip">
-            <select class="business-types" id="business-types">
+            <input class="bg-gray-600" type="text" id="searchTerm" placeholder="Search city, address, or zip">
+            <select class="bg-gray-600" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Grocery Store">Grocery Store</option>
@@ -42,24 +37,18 @@
                 <option value="Hotel">Hotel</option>
                 <option value="Museum">Museum</option>
             </select>
-            <label class="dogs">Allows Dogs:
+            <label class="">Allows Dogs:
                 <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
             </label>
             <button id="searchButton">Search</button>
         </div>
-        <button id="nextButton">Next</button>
         <button id="previousButton">Previous</button>
-
-
-
-        <summary class="results">
-            <h2 class="results-title">Results</h2>
-            <ul class="results-list" id="yelp-results"></ul>
+        <button id="nextButton">Next</button>
+        <summary class="">
+            <h2 class="">Results</h2>
+            <ul class="" id="yelp-results"></ul>
         </summary>
-
-        
-
     </main>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/nextButton.js"></script>
