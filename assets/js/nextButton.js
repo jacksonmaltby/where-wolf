@@ -1,6 +1,5 @@
 const API_KEYS = "T-SjguE8Kty3cVRNzp2IbdePc7PMKbZ9RYOF_U-m8iZWq2cdY_wKniY5mlZ7lbwUdnrFzQebI5zWkIhiJfpQiZuyIXnuxhXyJnZZensCwfWl7rehqqLyRxugkBzjY3Yx";
-const nextButton = document.querySelector("#nextButton");   
-
+const nextButton = document.querySelector("#nextButton");
 
 nextButton.addEventListener("click", async () => {
     offset += 4;
