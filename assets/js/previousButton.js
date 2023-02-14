@@ -23,7 +23,7 @@ previousButton.addEventListener("click", async () => {
   container.classList.add("flex", "flex-col");
   data.businesses.forEach(business => {
     const div = document.createElement("div");
-div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
+    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
 
     let description = "N/A";
     if (business.description) {
@@ -45,15 +45,15 @@ div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-
     container.appendChild(div);
   });
   results.appendChild(container);
-let bounds = L.latLngBounds();
-data.businesses.forEach(business => {
-bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
-});
-map.fitBounds(bounds);
+  let bounds = L.latLngBounds();
+  data.businesses.forEach(business => {
+    bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
+  });
+  map.fitBounds(bounds);
 
-// Creates a marker for each business
-data.businesses.forEach(business => {
-const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
-marker.bindPopup("<h3>" + business.name + "</h3>");
-});
+  // Creates a marker for each business
+  data.businesses.forEach(business => {
+    const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
+    marker.bindPopup("<h3>" + business.name + "</h3>");
+  });
 });
