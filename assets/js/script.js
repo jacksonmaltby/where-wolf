@@ -80,10 +80,12 @@ searchButton.addEventListener("click", async () => {
 });
 
 function saveLocation(location) {
-  let locations = JSON.parse(localStorage.getItem("locations")) || [];
-  locations.push(location);
-  localStorage.setItem("locations", JSON.stringify(locations));
-  updateLocationButtons();
+  if (location.trim() !== "") {
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+    locations.push(location);
+    localStorage.setItem("locations", JSON.stringify(locations));
+    updateLocationButtons();
+  }
 }
 
 function updateLocationButtons() {
@@ -99,6 +101,7 @@ function updateLocationButtons() {
     button.addEventListener("click", function () {
       displayResults(location);
     });
+    button.classList.add("w-full", "text-center", "border", "bg-gray-800", "py-2", "mb-2");
     locationContainer.appendChild(button);
   }
 }
