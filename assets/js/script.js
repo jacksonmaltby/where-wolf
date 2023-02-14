@@ -29,13 +29,13 @@ searchButton.addEventListener("click", async () => {
   const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=${offset}&limit=4`, {
     headers: {
       Authorization: `Bearer ${API_KEY}`
-  
+
     }
-  
+
   });
 
   const data = await response.json();
-console.log(data)
+  console.log(data)
   results.innerHTML = "";
   data.businesses.forEach(business => {
     const div = document.createElement("div");
