@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <style>
-        body {
-            background-image: url("./assets/images/iStock-1290748423.jpg");
+        body{
+            background-image: url("iStock-1290748423.jpg");
             background-repeat: no-repeat;
         }
     </style>
@@ -19,12 +18,12 @@
         crossorigin=""></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Where Wolf?</title>
+    <title>Where Wolf?</title> 
 </head>
 
 <body class=" bg-black text-red-100">
     <header class="">
-        <h1 class="text-5xl text-red-100">WHERE WOLF?</h1>
+        <h1 class="text-5xl text-red-100">WHEREWOLF?</h1>
     </header>
     <nav class="">
         <h3 class="text-3xl text-red-100 mx-20">What Are You Looking For?</h3>
@@ -34,8 +33,7 @@
             <div id="map"></div>
         </figure>
         <div class="flex justify-around text-orange-100">
-            <input class="border-2 border-red-100 bg-transparent w-74 h-12 text-red-100 placeholder-orange-100"
-                type="text" id="searchTerm" placeholder="Search city, address, or zip">
+            <input class="border-2 border-red-100 bg-transparent w-74 h-12 text-red-100 placeholder-orange-100" type="text" id="searchTerm" placeholder="Search city, address, or zip">
             <select class=" border-2 border-red-100 bg-black w-72 h-12 text-red-100" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
@@ -48,19 +46,23 @@
                 <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
             </label>
-            <button class="text-red-100" id="searchButton"><img
-                    src="./assets/images/icons8-paw-64.png" />Search</button>
+            <button class="text-red-100" id="searchButton"><img src="assets\css\icons8-paw-64.png"/>Search</button>
             </button>
         </div>
-        <div class="flex justify-around p-8 text-xl">
-            <button class=" border border-red-100 text-orange-100" id="previousButton">Previous</button>
-            <button class="text-orange-100" id="nextButton">Next</button>
+        <div class= "flex justify-around p-8 text-xl">
+        <button class=" border border-red-100 text-orange-100"id="previousButton">Previous</button>
+        <button class="text-orange-100" id="nextButton">Next</button>
         </div>
         <summary class="list-disc">
-            <h2>Past locations:</h2>
-            <div id="location-container"></div>
-            <h2 class="results">Results:</h2>
+            <h2 class="results"></h2>
             <ul class="m-12 list-disc text-2xl text-orange-100" id="yelp-results"></ul>
+        <h2>Past locations:</h2>
+        <div id="location-container"></div>
+        <button id="previousButton">Previous</button>
+        <button id="nextButton">Next</button>
+        <summary class="">
+            <h2 class="">Results</h2>
+            <ul class="" id="yelp-results"></ul>
         </summary>
     </main>
     <script src="./assets/js/script.js"></script>

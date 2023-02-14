@@ -9,6 +9,7 @@ const dogFriendlyCheckbox = document.querySelector("#dogs-allowed");
 // The map that displays on the right side of the page
 
 const url = "https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=${offset}&limit=4`"
+
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
 }).addTo(map);
@@ -37,60 +38,72 @@ searchButton.addEventListener("click", async () => {
   const data = await response.json();
   console.log(data)
   results.innerHTML = "";
+  const container = document.createElement("div");
+  container.classList.add("flex", "flex-col");
   data.businesses.forEach(business => {
     const div = document.createElement("div");
-    div.classList.add("card");
+div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
+
     let description = "N/A";
     if (business.description) {
       description = business.description;
     }
-    // Console log line 38 to retrive the business data and implemented into line 48. fixed business.location.address into business.location.address1
-    business.location
-    div.innerHTML = `<h3 class="">${business.name}</h3><p class="">${business.location.address1}</p><p class="">${business.location.city}</p><p class="">${business.location.state}</p><p class="">${business.location.zip_code}</p><p class="">${category.value}</p><p class="">${business.price}</p <p class="">${business.rating}</p> <p class="">${business.phone}</p <a class="">${business.url}</a`;
-    results.appendChild(div);
+    div.innerHTML = `
+      <div class="relative h-48">
+        <img class="w-full h-full object-cover object-center" src="${business.image_url}" alt="${business.name}">
+      </div>
+      <div class="text-center mt-4">
+        <h2 class="text-3xl text-white font-bold">${business.name}</h2>
+        <p class="text-gray-600">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
+        <p class="text-gray-600">${category.value}</p>
+        <p class="text-gray-600">Price:</p>
+        <p class="text-gray-600">Rating: ${business.rating} stars</p>
+        <a href="${business.url}" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+      </div>
+    `;
+    container.appendChild(div);
   });
+  results.appendChild(container);
+let bounds = L.latLngBounds();
+data.businesses.forEach(business => {
+bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
+});
+map.fitBounds(bounds);
 
-  let bounds = L.latLngBounds();
-  data.businesses.forEach(business => {
-    bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
-  });
-  map.fitBounds(bounds);
-
-  // Creates a marker for each business
-
-  data.businesses.forEach(business => {
-    const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
-    marker.bindPopup(`<h3>${business.name}</h3>`);
-  });
+// Creates a marker for each business
+data.businesses.forEach(business => {
+const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
+marker.bindPopup("<h3>" + business.name + "</h3>");
+});
 });
 
 function saveLocation(location) {
-  let locations = JSON.parse(localStorage.getItem("locations")) || [];
-  locations.push(location);
-  localStorage.setItem("locations", JSON.stringify(locations));
-  updateLocationButtons();
+let locations = JSON.parse(localStorage.getItem("locations")) || [];
+locations.push(location);
+localStorage.setItem("locations", JSON.stringify(locations));
+updateLocationButtons();
 }
 
 function updateLocationButtons() {
-  let locations = JSON.parse(localStorage.getItem("locations")) || [];
-  let locationContainer = document.getElementById("location-container");
-  locationContainer.innerHTML = "";
-  let uniqueLocations = Array.from(new Set(locations));
+let locations = JSON.parse(localStorage.getItem("locations")) || [];
+let locationContainer = document.getElementById("location-container");
+locationContainer.innerHTML = "";
+let uniqueLocations = Array.from(new Set(locations));
 
-  for (let i = 0; i < uniqueLocations.length; i++) {
-    let location = uniqueLocations[i];
-    let button = document.createElement("button");
-    button.innerHTML = location;
-    button.addEventListener("click", function () {
-      displayResults(location);
-    });
-    locationContainer.appendChild(button);
-  }
+for (let i = 0; i < uniqueLocations.length; i++) {
+let location = uniqueLocations[i];
+let button = document.createElement("button");
+button.innerHTML = location;
+button.addEventListener("click", function () {
+displayResults(location);
+});
+locationContainer.appendChild(button);
+}
 }
 
 function displayResults(location) {
-  searchTerm.value = location;
-  searchButton.click();
+searchTerm.value = location;
+searchButton.click();
 }
 
 updateLocationButtons();

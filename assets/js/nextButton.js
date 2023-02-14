@@ -1,47 +1,60 @@
 const API_KEYS = "T-SjguE8Kty3cVRNzp2IbdePc7PMKbZ9RYOF_U-m8iZWq2cdY_wKniY5mlZ7lbwUdnrFzQebI5zWkIhiJfpQiZuyIXnuxhXyJnZZensCwfWl7rehqqLyRxugkBzjY3Yx";
-const nextButton = document.querySelector("#nextButton");
+const nextButton = document.querySelector("#nextButton");   
+let markers = [];
 
 nextButton.addEventListener("click", async () => {
-    offset += 4;
-    const location = searchTerm.value;
-    let term = "dog+friendly+";
-    if (!dogFriendlyCheckbox.checked) {
-        term = "";
+  offset += 4;
+  var location = searchTerm.value;
+  let term = "dog+friendly+";
+  if (!dogFriendlyCheckbox.checked) {
+    term = "";
+  }
+  term += category.value;
+
+  var response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=${offset}&limit=4`, {
+    headers: {
+      Authorization: `Bearer ${API_KEY}`
     }
-    term += category.value;
+  });
 
-    const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=${offset}&limit=4`, {
-        headers: {
-            Authorization: `Bearer ${API_KEYS}`
-        }
-    });
+  const data = await response.json();
+  console.log(data)
+  results.innerHTML = "";
+  const container = document.createElement("div");
+  container.classList.add("flex", "flex-col");
+  data.businesses.forEach(business => {
+    const div = document.createElement("div");
+div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
 
-    const data = await response.json();
+    let description = "N/A";
+    if (business.description) {
+      description = business.description;
+    }
+    div.innerHTML = `
+      <div class="relative h-48">
+        <img class="w-full h-full object-cover object-center" src="${business.image_url}" alt="${business.name}">
+      </div>
+      <div class="text-center mt-4">
+        <h2 class="text-3xl text-white font-bold">${business.name}</h2>
+        <p class="text-gray-600">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
+        <p class="text-gray-600">${category.value}</p>
+        <p class="text-gray-600">Price:</p>
+        <p class="text-gray-600">Rating: ${business.rating} stars</p>
+        <a href="${business.url}" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+  results.appendChild(container);
+let bounds = L.latLngBounds();
+data.businesses.forEach(business => {
+bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
+});
+map.fitBounds(bounds);
 
-    results.innerHTML = "";
-    data.businesses.forEach(business => {
-        const li = document.createElement("li");
-        let description = "N/A";
-        if (business.description) {
-            description = business.description;
-        }
-        li.innerHTML = `<h3>${business.name}</h3><p>${business.location.address}</p><p>${business.location.city}</p><p>${business.location.state}</p><p>${business.location.zip_code}</p><p>${category.value}</p><p>${description}</p>`;
-        results.appendChild(li);
-    });
-
-    let bounds = L.latLngBounds();
-    data.businesses.forEach(business => {
-        bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
-    });
-    map.fitBounds(bounds);
-
-    data.businesses.forEach(business => {
-        let description = "N/A";
-        if (business.description) {
-            description = business.description;
-        }
-        const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude])
-            .addTo(map)
-            .bindPopup(`<h3>${business.name}</h3><p>${business.location.address}</p><p>${business.location.city}</p><p>${business.location.state}</p><p>${business.location.zip_code}</p><p>${category.value}</p><p>${description}</p>`);
-    });
+// Creates a marker for each business
+data.businesses.forEach(business => {
+const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
+marker.bindPopup("<h3>" + business.name + "</h3>");
+});
 });
