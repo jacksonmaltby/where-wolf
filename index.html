@@ -25,25 +25,18 @@
 <body class=" bg-black text-blue-200">
     <header class="">
         <h1 class="text-5xl text-blue-200">WHERE WOLF?</h1>
-        <h1 class="text-5xl text-red-100">WHERE WOLF?</h1>
     </header>
     <nav class="">
         <h3 class="text-3xl text-blue-200 mx-20">What Are You Looking For?</h3>
     </nav>
     <main>
-<<<<<<< HEAD
-        <div class="flex justify-around text-blue-200">
-            <input class="border-2 border-blue-200 bg-transparent w-74 h-12 text-red-100 placeholder-blue-200" type="text" id="searchTerm" placeholder="Search city, address, or zip">
-            <select class=" border-2 border-blue-200 bg-transparent w-72 h-12 text-blue-200" id="business-types">
-=======
         <figure class="">
             <div id="map"></div>
         </figure>
-        <div class="flex justify-around text-orange-100">
-            <input class="border-2 border-red-100 bg-transparent w-74 h-12 text-red-100 placeholder-orange-100"
-                type="text" id="searchTerm" placeholder="Search city, address, or zip">
-            <select class="border-2 border-red-100 bg-black w-72 h-12 text-red-100" id="business-types">
->>>>>>> 6ae4db37f822986c9217199574c0b31969084606
+        <div class="flex justify-around text-blue-200">
+            <input class="border-2 border-blue-200 bg-transparent w-74 h-12 text-red-100 placeholder-blue-200"
+                type="text" id="searchTerm" placeholder="Search city, address, or zip"></input>
+            <select class="border-2 border-blue-200 bg-transparent w-72 h-12 text-blue-200" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Grocery Store">Grocery Store</option>
@@ -54,25 +47,26 @@
             <label class="">Allows Dogs
                 <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
-            </label> 
-            <button class="text-blue-200" id="searchButton"><img src="assets\images\icons8-paw-64 (5).png">Search</button>
+            </label>
+            <button class="text-blue-200" id="searchButton"><img
+                    src="assets\images\icons8-paw-64 (5).png">Search</button>
             </button>
         </div>
-        <div class= "flex justify-around p-8 text-xl">
-        <button class=" border border-blue-200 text-blue-200"id="previousButton">Previous</button>
-        <button class="text-blue-200" id="nextButton">Next</button>
+        <div class="flex justify-around p-8 text-xl">
+            <button class=" border border-blue-200 text-blue-200" id="previousButton">Previous</button>
+            <button class="text-blue-200" id="nextButton">Next</button>
         </div>
-        <summary class="list-disc">
+        <summary class="list disc"
             <h2 class="results"></h2>
             <ul class="m-12 list-disc text-2xl text-blue-200" id="yelp-results"></ul>
-        <h2>Past locations:</h2>
-        <div id="location-container"></div>
-        <button id="previousButton">Previous</button>
-        <button id="nextButton">Next</button>
-        <summary class="">
-            <h2 class="">Results</h2>
-            <ul class="" id="yelp-results"></ul>
-        </summary>
+            <h2>Past locations:</h2>
+            <div id="location-container"></div>
+            <button id="previousButton">Previous</button>
+            <button id="nextButton">Next</button>
+            <summary class="">
+                <h2 class="">Results</h2>
+                <ul class="" id="yelp-results"></ul>
+            </summary>
     </main>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/nextButton.js"></script>
