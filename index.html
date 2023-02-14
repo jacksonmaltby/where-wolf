@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <style>
+        body{
+            background-image: url("iStock-1290748423.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,23 +18,23 @@
         crossorigin=""></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Where Wolf?</title>
+    <title>Where Wolf?</title> 
 </head>
 
-<body class="bg-gray-900 text-gray-100">
+<body class=" bg-black text-red-100">
     <header class="">
-        <h1 class="text-5xl text-blue-400">Where Wolf?</h1>
+        <h1 class="text-5xl text-red-100">WHEREWOLF?</h1>
     </header>
     <nav class="">
-        <h3 class="text-3xl text-blue-400 mx-10">What are you looking for?</h3>
+        <h3 class="text-3xl text-red-100 mx-20">What Are You Looking For?</h3>
     </nav>
     <main>
         <figure class="">
             <div id="map"></div>
         </figure>
-        <div class="flex justify-around text-blue-400">
-            <input class="bg-gray-800 text-blue-400" type="text" id="searchTerm" placeholder="Search city, address, or zip">
-            <select class="bg-gray-800" id="business-types">
+        <div class="flex justify-around text-orange-100">
+            <input class="border-2 border-red-100 bg-transparent w-74 h-12 text-red-100 placeholder-orange-100" type="text" id="searchTerm" placeholder="Search city, address, or zip">
+            <select class=" border-2 border-red-100 bg-black w-72 h-12 text-red-100" id="business-types">
                 <option>-Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Grocery Store">Grocery Store</option>
@@ -37,18 +42,20 @@
                 <option value="Hotel">Hotel</option>
                 <option value="Museum">Museum</option>
             </select>
-            <label class="">Allows Dogs:
+            <label class="">Allows Dogs
                 <input type="checkbox" id="dogs-allowed"></input>
                 <span></span>
             </label>
-            <button id="searchButton"><img src="https://img.icons8.com/external-icongeek26-outline-colour-icongeek26/64/null/external-paws-pet-care-icongeek26-outline-colour-icongeek26.png"/>Search
+            <button class="text-red-100" id="searchButton"><img src="assets\css\icons8-paw-64.png"/>Search</button>
             </button>
         </div>
-        <button class="text-blue-400" id="previousButton">Previous</button>
-        <button class="text-blue-400" id="nextButton">Next</button>
-        <summary class="">
-            <h2 class="text-blue-400">results</h2>
-            <ul class="" id="yelp-results"></ul>
+        <div class= "flex justify-around p-8 text-xl">
+        <button class=" border border-red-100 text-orange-100"id="previousButton">Previous</button>
+        <button class="text-orange-100" id="nextButton">Next</button>
+        </div>
+        <summary class="list-disc">
+            <h2 class="results"></h2>
+            <ul class="m-12 list-disc text-2xl text-orange-100" id="yelp-results"></ul>
         </summary>
     </main>
     <script src="./assets/js/script.js"></script>
