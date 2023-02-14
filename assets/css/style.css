@@ -11,6 +11,10 @@
   display: none;
 }
 
+#results {
+  display: none;
+}
+
 
 body {
   font-family: helvetica;
@@ -29,4 +33,9 @@ header {
 
 ::placeholder {
   color: aquamarine;
+}
+
+.business-image {
+  width: 600px;
+  height: 200px;
 }
