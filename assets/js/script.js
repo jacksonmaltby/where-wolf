@@ -20,6 +20,8 @@ document.querySelector("#map").style.display = "none";
 // Added dogFriendlyCheckbox for a user to select if they want to add dog friendly businesses or not
 searchButton.addEventListener("click", async () => {
   document.querySelector("#map").style.display = "block";
+  document.querySelector("#nextButton").style.display = "block";
+  document.querySelector("#previousButton").style.display = "block";
   var location = searchTerm.value;
   saveLocation(location);
   let term = "dog+friendly+";
@@ -56,9 +58,9 @@ searchButton.addEventListener("click", async () => {
         <h2 class="text-3xl text-white font-bold">${business.name}</h2>
         <p class="text-gray-600">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
         <p class="text-gray-600">${category.value}</p>
-        <p class="text-gray-600">Price:</p>
+        <p class="text-gray-600">Price: ${business.price}</p>
         <p class="text-gray-600">Rating: ${business.rating} stars</p>
-        <a href="${business.url}" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+        <a href="${business.url}" target="_blank" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
       </div>
     `;
     container.appendChild(div);

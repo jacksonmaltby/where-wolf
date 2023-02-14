@@ -7,6 +7,11 @@
   margin: 30px;
 }
 
+#nextButton, #previousButton {
+  display: none;
+}
+
+
 body {
   font-family: helvetica;
   margin: 0;
