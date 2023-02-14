@@ -42,7 +42,7 @@ searchButton.addEventListener("click", async () => {
   container.classList.add("flex", "flex-col");
   data.businesses.forEach(business => {
     const div = document.createElement("div");
-div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
+    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
 
     let description = "N/A";
     if (business.description) {
@@ -64,46 +64,49 @@ div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-
     container.appendChild(div);
   });
   results.appendChild(container);
-let bounds = L.latLngBounds();
-data.businesses.forEach(business => {
-bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
-});
-map.fitBounds(bounds);
+  let bounds = L.latLngBounds();
+  data.businesses.forEach(business => {
+    bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
+  });
+  map.fitBounds(bounds);
 
-// Creates a marker for each business
-data.businesses.forEach(business => {
-const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
-marker.bindPopup("<h3>" + business.name + "</h3>");
-});
+  // Creates a marker for each business
+  data.businesses.forEach(business => {
+    const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
+    marker.bindPopup("<h3>" + business.name + "</h3>");
+  });
 });
 
 function saveLocation(location) {
-let locations = JSON.parse(localStorage.getItem("locations")) || [];
-locations.push(location);
-localStorage.setItem("locations", JSON.stringify(locations));
-updateLocationButtons();
+  if (location.trim() !== "") {
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+    locations.push(location);
+    localStorage.setItem("locations", JSON.stringify(locations));
+    updateLocationButtons();
+  }
 }
 
 function updateLocationButtons() {
-let locations = JSON.parse(localStorage.getItem("locations")) || [];
-let locationContainer = document.getElementById("location-container");
-locationContainer.innerHTML = "";
-let uniqueLocations = Array.from(new Set(locations));
+  let locations = JSON.parse(localStorage.getItem("locations")) || [];
+  let locationContainer = document.getElementById("location-container");
+  locationContainer.innerHTML = "";
+  let uniqueLocations = Array.from(new Set(locations));
 
-for (let i = 0; i < uniqueLocations.length; i++) {
-let location = uniqueLocations[i];
-let button = document.createElement("button");
-button.innerHTML = location;
-button.addEventListener("click", function () {
-displayResults(location);
-});
-locationContainer.appendChild(button);
-}
+  for (let i = 0; i < uniqueLocations.length; i++) {
+    let location = uniqueLocations[i];
+    let button = document.createElement("button");
+    button.innerHTML = location;
+    button.addEventListener("click", function () {
+      displayResults(location);
+    });
+    button.classList.add("w-full", "text-center", "border", "bg-gray-800", "py-2", "mb-2");
+    locationContainer.appendChild(button);
+  }
 }
 
 function displayResults(location) {
-searchTerm.value = location;
-searchButton.click();
+  searchTerm.value = location;
+  searchButton.click();
 }
 
 updateLocationButtons();
