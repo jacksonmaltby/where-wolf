@@ -16,6 +16,7 @@ let offset = 0;
 
 searchButton.addEventListener("click", async () => {
   const location = searchTerm.value;
+  saveLocation(location);
   let term = "dog+friendly+";
   if (!dogFriendlyCheckbox.checked) {
     term = "";
@@ -55,3 +56,34 @@ searchButton.addEventListener("click", async () => {
     marker.bindPopup(`<h3>${business.name}</h3>`);
   });
 });
+
+function saveLocation(location) {
+  let locations = JSON.parse(localStorage.getItem("locations")) || [];
+  locations.push(location);
+  localStorage.setItem("locations", JSON.stringify(locations));
+  updateLocationButtons();
+}
+
+function updateLocationButtons() {
+  let locations = JSON.parse(localStorage.getItem("locations")) || [];
+  let locationContainer = document.getElementById("location-container");
+  locationContainer.innerHTML = "";
+  let uniqueLocations = Array.from(new Set(locations));
+
+  for (let i = 0; i < uniqueLocations.length; i++) {
+    let location = uniqueLocations[i];
+    let button = document.createElement("button");
+    button.innerHTML = location;
+    button.addEventListener("click", function () {
+      displayResults(location);
+    });
+    locationContainer.appendChild(button);
+  }
+}
+
+function displayResults(location) {
+  searchTerm.value = location;
+  searchButton.click();
+}
+
+updateLocationButtons();
