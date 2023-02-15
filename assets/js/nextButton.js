@@ -3,6 +3,12 @@ const nextButton = document.querySelector("#nextButton");
 let markers = [];
 
 nextButton.addEventListener("click", async () => {
+  // remove previous markers from the map
+  markers.forEach(marker => {
+    map.removeLayer(marker);
+  });
+  markers = [];
+
   offset += 4;
   var location = searchTerm.value;
   let term = "dog+friendly+";
@@ -62,5 +68,6 @@ nextButton.addEventListener("click", async () => {
   data.businesses.forEach(business => {
     const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
     marker.bindPopup("<h3>" + business.name + "</h3>");
+    markers.push(marker);
   });
 });

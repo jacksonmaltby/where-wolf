@@ -51,6 +51,12 @@ previousButton.addEventListener("click", async () => {
 
   results.appendChild(container);
 
+  // Remove the previous markers
+  markers.forEach(marker => {
+    marker.remove();
+  });
+  markers = [];
+
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
     bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
@@ -61,5 +67,6 @@ previousButton.addEventListener("click", async () => {
   data.businesses.forEach(business => {
     const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
     marker.bindPopup("<h3>" + business.name + "</h3>");
+    markers.push(marker);
   });
 });
