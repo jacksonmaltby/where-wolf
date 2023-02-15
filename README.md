@@ -39,7 +39,7 @@ Where Wolf? is a search application that allows users to search for different ty
 
 ## Screenshot of Live Page
 
-![Screenshot of Page](./assets/images/)
+![Screenshot of Page](./assets/images/2023-02-14.png)
 
 ## Link to Live Page
 

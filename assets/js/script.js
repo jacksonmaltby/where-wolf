@@ -19,7 +19,6 @@ document.querySelector("#map").style.display = "none";
 // Search button that calls the Yelp Fusion API and returns businesses that are dog friendly.
 // Added dogFriendlyCheckbox for a user to select if they want to add dog friendly businesses or not
 
-
 // Displays search results and a map of the businesses that are dog friendly
 
 searchButton.addEventListener("click", async () => {
@@ -78,14 +77,12 @@ searchButton.addEventListener("click", async () => {
 
   results.appendChild(container);
 
-  
   // Remove all the markers from the map after a new search result is imputted 
   map.eachLayer(layer => {
     if (layer instanceof L.Marker) {
       map.removeLayer(layer);
     }
   });
-
 
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
@@ -133,8 +130,6 @@ function displayResults(location, businessType, dogsAllowed) {
   searchTerm.value = location;
   searchButton.click();
 }
-
-
 
 // Calls the updateLocationButtons function when the page is loaded
 updateLocationButtons();
