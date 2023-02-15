@@ -18,6 +18,8 @@ let offset = 0;
 document.querySelector("#map").style.display = "none";
 // Search button that calls the Yelp Fusion API and returns businesses that are dog friendly.
 // Added dogFriendlyCheckbox for a user to select if they want to add dog friendly businesses or not
+// Search button that calls the Yelp Fusion API and returns businesses that are dog friendly.
+// Added dogFriendlyCheckbox for a user to select if they want to add dog friendly businesses or not
 searchButton.addEventListener("click", async () => {
   document.querySelector("#map").style.display = "block";
   document.querySelector("#nextButton").style.display = "block";
@@ -32,9 +34,7 @@ searchButton.addEventListener("click", async () => {
   const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&offset=${offset}&limit=4`, {
     headers: {
       Authorization: `Bearer ${API_KEY}`
-
     }
-
   });
 
   const data = await response.json();
@@ -66,11 +66,18 @@ searchButton.addEventListener("click", async () => {
     container.appendChild(div);
   });
   results.appendChild(container);
+  
+  // Remove all the markers from the map after a new search result is imputted 
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
+
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
     bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
   });
-  map.fitBounds(bounds);
 
   // Creates a marker for each business
   data.businesses.forEach(business => {
