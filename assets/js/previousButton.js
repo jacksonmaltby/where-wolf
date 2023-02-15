@@ -18,9 +18,11 @@ previousButton.addEventListener("click", async () => {
 
   const data = await response.json();
   console.log(data)
+
   results.innerHTML = "";
   const container = document.createElement("div");
   container.classList.add("flex", "flex-col");
+
   data.businesses.forEach(business => {
     const div = document.createElement("div");
     div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
@@ -29,22 +31,26 @@ previousButton.addEventListener("click", async () => {
     if (business.description) {
       description = business.description;
     }
+
     div.innerHTML = `
       <div class="relative h-48">
-        <img class="w-full h-full object-cover object-center" src="${business.image_url}" alt="${business.name}">
+        <img class="w-full h-full object-cover object-center business-image" src="${business.image_url}" alt="${business.name}">
       </div>
       <div class="text-center mt-4">
         <h2 class="text-3xl text-white font-bold">${business.name}</h2>
         <p class="text-gray-600">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
         <p class="text-gray-600">${category.value}</p>
-        <p class="text-gray-600">Price:</p>
+        <p class="text-gray-600">Price: ${business.price}</p>
         <p class="text-gray-600">Rating: ${business.rating} stars</p>
-        <a href="${business.url}" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+        <a href="${business.url}" target="_blank" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
       </div>
     `;
+
     container.appendChild(div);
   });
+
   results.appendChild(container);
+
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
     bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
