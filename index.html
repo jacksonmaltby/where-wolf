@@ -27,17 +27,17 @@
         <h1 class="text-5xl text-blue-200">WHERE WOLF?</h1>
     </header>
     <nav class="">
-        <h3 class="text-3xl text-blue-200 mx-20">What Are You Looking For?</h3>
+        <h3 class=" justify-center text-3xl text-blue-200">What Are You Looking For?</h3>
     </nav>
     <main>
         <figure class="">
             <div id="map"></div>
         </figure>
-        <div class="flex justify-around text-blue-200">
-            <input class="border-2 border-blue-200 bg-transparent w-74 h-12 text-red-100 placeholder-blue-200"
+        <div class="flex justify-start gap-20 ml-20 text-blue-200">
+            <input class="border-2 border-blue-200 bg-transparent w-74 h-12 text-blue-200 placeholder-blue-200"
                 type="text" id="searchTerm" placeholder="Search city, address, or zip"></input>
             <select class="border-2 border-blue-200 bg-transparent w-72 h-12 text-blue-200" id="business-types">
-                <option>-Type of Business-</option>
+                <option>Type of Business-</option>
                 <option value="Restaurant">Restaurant</option>
                 <option value="Grocery Store">Grocery Store</option>
                 <option value="Park">Park</option>
@@ -56,16 +56,15 @@
             <button class=" border border-blue-200 text-blue-200" id="previousButton">Previous</button>
             <button class="text-blue-200" id="nextButton">Next</button>
         </div>
-        <summary class="list disc"
-            <h2 class="results"></h2>
+        <summary class="list disc flex flex-row">
+            <div id="past locations" class="w-48 mx-20">
+                <h2>Past locations:</h2>
+                <div id="location-container" class="flex flex-col"></div>
+                </div>
+            <div id="results" class="w-3/4">
+                <h2 class="results">Results</h2>
             <ul class="m-12 list-disc text-2xl text-blue-200" id="yelp-results"></ul>
-            <h2>Past locations:</h2>
-            <div id="location-container"></div>
-            <button id="previousButton">Previous</button>
-            <button id="nextButton">Next</button>
-            <summary class="">
-                <h2 class="">Results</h2>
-                <ul class="" id="yelp-results"></ul>
+            </div>
             </summary>
     </main>
     <script src="./assets/js/script.js"></script>
