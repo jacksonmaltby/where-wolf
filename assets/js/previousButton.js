@@ -1,3 +1,6 @@
+var API = "T-SjguE8Kty3cVRNzp2IbdePc7PMKbZ9RYOF_U-m8iZWq2cdY_wKniY5mlZ7lbwUdnrFzQebI5zWkIhiJfpQiZuyIXnuxhXyJnZZensCwfWl7rehqqLyRxugkBzjY3Yx";
+var previousButton = document.querySelector("#previousButton");
+
 previousButton.addEventListener("click", async () => {
   offset -= 4;
   var location = searchTerm.value;
