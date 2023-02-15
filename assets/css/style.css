@@ -5,153 +5,150 @@
   width: 45%;
   float: right;
   margin: 30px;
-}
-
-#nextButton,
-#previousButton {
+  }
+  
+  #nextButton, #previousButton {
   display: none;
-}
-
-#results {
+  }
+  
+  #results {
   display: none;
-}
-
-body {
+  }
+  
+  body {
   font-family: helvetica;
   margin: 0;
   height: 100vh;
   /* cursor: url("assets\css\icons8-dog-bone-30 (1).png"), auto; */
-}
-
-header {
+  }
+  
+  header {
   margin-left: auto;
   margin-right: auto;
   padding: 10px 0px 10px 0px;
   text-align: center;
-}
-
-::placeholder {
-  color: aquamarine;
-}
-
-.business-image {
+  }
+  select option{
+    background-color: transparent;
+  }
+  
+  .business-image {
   width: 600px;
   height: 200px;
-}
-
-@media only screen and (max-width: 600px) {
+  }
+  
+  @media only screen and (max-width: 600px) {
   #map {
-    height: 300px;
-    width: 100%;
-    float: none;
-    margin: 20px 0;
+  height: 300px;
+  width: 100%;
+  float: none;
+  margin: 20px 0;
   }
-
+  
   .business-image {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
   }
-
+  
   .flex {
-    flex-direction: column;
+  flex-direction: column;
   }
-
+  
   .justify-around {
-    justify-content: center;
+  justify-content: center;
   }
-
+  
   .text-center {
-    text-align: center;
+  text-align: center;
   }
-
+  
   .text-xl {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
   }
-
+  
   .text-2xl {
-    font-size: 2rem;
+  font-size: 2rem;
   }
-
+  
   .text-3xl {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
   }
-
+  
   .text-5xl {
-    font-size: 4rem;
+  font-size: 4rem;
   }
-
+  
   #location-container {
-    flex-direction: row;
-    flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   }
-
+  
   .max-w-md {
-    max-width: 100%;
+  max-width: 100%;
   }
-
+  
   .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
   }
-
+  
   #previousButton,
   #nextButton {
-    display: block;
-    margin: 20px auto;
+  display: block;
+  margin: 20px auto;
   }
-
+  
   input,
   select,
   label,
   button {
-    width: 100%;
-    margin: 10px 0;
+  width: 100%;
+  margin: 10px 0;
   }
-
+  
   .list-disc {
-    margin: 20px 0;
+  margin: 20px 0;
   }
-
+  
   .p-8 {
-    padding: 10px;
+  padding: 10px;
   }
-
+  
   /* Center cards on mobile */
-  #results>div {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  #results > div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   }
-
+  
   /* Adjust image size on mobile */
   .business-image {
-    width: 100%;
-    max-height: 200px;
+  width: 100%;
+  max-height: 200px;
   }
-
+  
   /* Adjust text size on mobile */
-  h2,
-  p {
-    font-size: 1.5rem;
+  h2, p {
+  font-size: 1.5rem;
   }
-
+  
   .text-2xl {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
   }
-
+  
   .text-3xl {
-    font-size: 2rem;
+  font-size: 2rem;
   }
-
+  
   .text-5xl {
-    font-size: 3rem;
+  font-size: 3rem;
   }
-
+  
   /* Adjust button size on mobile */
   button {
-    font-size: 1.5rem;
-    padding: 10px 20px;
+  font-size: 1.5rem;
+  padding: 10px 20px;
   }
-}
+  }
