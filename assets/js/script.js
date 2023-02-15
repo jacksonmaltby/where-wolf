@@ -116,8 +116,6 @@ function updateLocationButtons() {
 // Displays the results of a location search
 function displayResults(location, businessType, dogsAllowed) {
   searchTerm.value = location;
-  category.value = businessType;
-  dogFriendlyCheckbox.checked = dogsAllowed;
   searchButton.click();
 }
 
