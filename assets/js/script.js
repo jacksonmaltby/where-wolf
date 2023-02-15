@@ -45,7 +45,7 @@ searchButton.addEventListener("click", async () => {
 
   data.businesses.forEach(business => {
     const div = document.createElement("div");
-    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
+    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-black", "mt-6", "mx-auto", "p-4");
 
     let description = "N/A";
     if (business.description) {
@@ -62,7 +62,7 @@ searchButton.addEventListener("click", async () => {
         <p class="text-gray-600">${category.value}</p>
         <p class="text-gray-600">Price: ${business.price}</p>
         <p class="text-gray-600">Rating: ${business.rating} stars</p>
-        <a href="${business.url}" target="_blank" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+        <a href="${business.url}" target="_blank" class="inline-block bg-black text-blue-300 py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
       </div>
     `;
 
@@ -108,7 +108,7 @@ function updateLocationButtons() {
     button.addEventListener("click", function () {
       displayResults(location);
     });
-    button.classList.add("w-full", "text-center", "border", "bg-gray-800", "py-2", "mb-2");
+    button.classList.add("w-full", "text-center", "border", "bg-transparent", "py-2", "mb-2");
     locationContainer.appendChild(button);
   }
 }
