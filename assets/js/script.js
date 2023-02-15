@@ -86,8 +86,12 @@ searchButton.addEventListener("click", async () => {
 
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
-    bounds.extend([business.coordinates.latitude, business.coordinates.longitude]);
+    const marker = L.marker([business.coordinates.latitude, business.coordinates.longitude]).addTo(map);
+    marker.bindPopup("<h3>" + business.name + "</h3>");
+    bounds.extend([business.coordinates.latitude, business.coordinates.longitude]); // extend the bounds of the map to include the marker
   });
+
+  map.fitBounds(bounds);
 
   // Creates a marker for each business
   data.businesses.forEach(business => {
