@@ -2,6 +2,12 @@ var API = "T-SjguE8Kty3cVRNzp2IbdePc7PMKbZ9RYOF_U-m8iZWq2cdY_wKniY5mlZ7lbwUdnrFz
 var previousButton = document.querySelector("#previousButton");
 
 previousButton.addEventListener("click", async () => {
+  // remove previous markers from the map
+  markers.forEach(marker => {
+    map.removeLayer(marker);
+  });
+  markers = [];
+
   offset -= 4;
   var location = searchTerm.value;
   let term = "dog+friendly+";

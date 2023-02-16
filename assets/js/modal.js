@@ -4,9 +4,14 @@ var modal = document.getElementById("welcomeModal");
 // Get the close button
 var closeBtn = document.getElementsByClassName("close")[0];
 
-// When the page is loaded, show the modal
-window.onload = function() {
-  modal.style.display = "block";
+// Check if the user has seen the modal before
+if (!localStorage.getItem("modalShown")) {
+  // When the page is loaded, show the modal
+  window.onload = function() {
+    modal.style.display = "block";
+  }
+  // Store a flag in localStorage indicating that the modal has been shown
+  localStorage.setItem("modalShown", true);
 }
 
 // When the user clicks on the close button, hide the modal
