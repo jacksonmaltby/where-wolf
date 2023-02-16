@@ -6,15 +6,16 @@
         body {
             background-image: url("./assets/images/iStock-1290748423.jpg");
             background-repeat: no-repeat;
-            background-color: rgba(25,17,19,255);
-        }
-        select{
-            background-color: rgba(25,17,19,255);
-        }
-        input{
-            accent-color: rgba(16,5,8,255);
+            background-color: rgba(25, 17, 19, 255);
         }
 
+        select {
+            background-color: rgba(25, 17, 19, 255);
+        }
+
+        input {
+            accent-color: rgba(16, 5, 8, 255);
+        }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,13 +31,14 @@
     <title>Where Wolf?</title>
 </head>
 
+
 <body class="text-blue-200">
     <header class="">
         <h1 class="text-5xl text-blue-200">WHERE WOLF?</h1>
     </header>
     <nav class="">
         <div class="flex justify-start ml-24">
-        <h3 class="text-4xl text-blue-200">What Are You Looking For?</h3>
+            <h3 class="text-4xl text-blue-200">What Are You Looking For?</h3>
         </div>
     </nav>
     <main>
@@ -58,8 +60,7 @@
                 <input type="checkbox" class="" id="dogs-allowed"></input>
                 <span class="checkmark"></span>
             </label>
-            <button class="text-blue-200" id="searchButton"><img
-                    src="assets\images\icons8-paw-64 (5).png">Search
+            <button class="text-blue-200" id="searchButton"><img src="assets\images\icons8-paw-64 (5).png">Search
             </button>
         </div>
         <div class="flex justify-around p-8 text-xl">
@@ -76,7 +77,19 @@
                 <ul class="m-12 list-disc text-2xl text-blue-200" id="yelp-results"></ul>
             </div>
         </summary>
+
+        <!-- Modal -->
+        <div id="welcomeModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h4>Welcome to Where Wolf</h4>
+                <p>Please search a city, address, or zip code and be sure to select the "Allow Dogs" box and click
+                    search. The results will display all the dog friendly businesses in the area you searched!</p>
+            </div>
+        </div>
+
     </main>
+    <script src="./assets/js/modal.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/nextButton.js"></script>
     <script src="./assets/js/previousButton.js"></script>

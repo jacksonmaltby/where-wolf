@@ -25,7 +25,7 @@ previousButton.addEventListener("click", async () => {
 
   data.businesses.forEach(business => {
     const div = document.createElement("div");
-    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-gray-900", "mt-6", "mx-auto", "p-4");
+    div.classList.add("max-w-md", "rounded-md", "overflow-hidden", "shadow-lg", "bg-black", "mt-6", "mx-auto", "p-4");
 
     let description = "N/A";
     if (business.description) {
@@ -37,12 +37,12 @@ previousButton.addEventListener("click", async () => {
         <img class="w-full h-full object-cover object-center business-image" src="${business.image_url}" alt="${business.name}">
       </div>
       <div class="text-center mt-4">
-        <h2 class="text-3xl text-white font-bold">${business.name}</h2>
-        <p class="text-gray-600">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
-        <p class="text-gray-600">${category.value}</p>
-        <p class="text-gray-600">Price: ${business.price}</p>
-        <p class="text-gray-600">Rating: ${business.rating} stars</p>
-        <a href="${business.url}" target="_blank" class="inline-block bg-gray-900 text-white py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #E53E3E;">Visit Website</a>
+        <h2 class="text-3xl text-blue-300 font-bold">${business.name}</h2>
+        <p class="text-blue-200">${business.location.address1}, ${business.location.city}, ${business.location.state} ${business.location.zip_code}</p>
+        <p class="text-blue-200">${category.value}</p>
+        <p class="text-blue-200">Price: ${business.price}</p>
+        <p class="text-blue-200">Rating: ${business.rating} stars</p>
+        <a href="${business.url}" target="_blank" class="inline-block bg-black text-purple-300 py-2 px-4 rounded-full mt-4 hover:bg-gray-800" style="background-color: #725fgb;">Visit Website</a>
       </div>
     `;
 
@@ -50,12 +50,6 @@ previousButton.addEventListener("click", async () => {
   });
 
   results.appendChild(container);
-
-  // Remove the previous markers
-  markers.forEach(marker => {
-    marker.remove();
-  });
-  markers = [];
 
   let bounds = L.latLngBounds();
   data.businesses.forEach(business => {
