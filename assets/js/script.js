@@ -91,6 +91,7 @@ searchButton.addEventListener("click", async () => {
   });
 });
 
+
 // Saves the location a user searches for in local storage
 function saveLocation(location) {
   if (location !== "") {
